@@ -1,0 +1,43 @@
+rootProject.name = 'java-threads-concurrency-utilities'
+
+include 'appa:ch01'
+include 'appa:ch02'
+include 'appa:ch03'
+include 'appa:ch04'
+include 'appa:ch05'
+include 'appa:ch06'
+include 'appa:ch07'
+include 'appb:Counter'
+include 'appb:SlideShow'
+include 'appb:ViewPage'
+include 'ch01:ThreadDemo'
+include 'ch02:DeadlockDemo'
+include 'ch02:ID'
+include 'ch02:JoinDemo'
+include 'ch02:ThreadStopping'
+include 'ch02:UsePlanets'
+include 'ch03:PC'
+include 'ch04:ExceptionThread'
+include 'ch04:InheritableThreadLocalDemo'
+include 'ch04:ThreadLocalDemo'
+include 'ch04:TimerDemo'
+include 'ch05:CalculateE'
+include 'ch06:CountDownLatchDemo'
+include 'ch06:CyclicBarrierDemo'
+include 'ch06:ExchangerDemo'
+include 'ch06:PhaserDemo'
+include 'ch06:SemaphoreDemo'
+include 'ch07:Dictionary'
+include 'ch07:PC'
+include 'ch07:RLDemo'
+include 'ch08:CSDemo'
+include 'ch08:ID'
+include 'ch08:MatMult'
+include 'ch08:PC'
+
+rootProject.children.each { project ->
+    project.buildFileName = "${project.name}.gradle"
+    assert project.projectDir.isDirectory()
+    assert project.buildFile.exists()
+    assert project.buildFile.isFile()
+}
