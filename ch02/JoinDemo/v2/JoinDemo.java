@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class JoinDemo
 {
@@ -8,7 +9,7 @@ public class JoinDemo
 
    // rounding mode to use during pi computation
 
-   private static final int roundingMode = BigDecimal.ROUND_HALF_EVEN;
+   private static final RoundingMode roundingMode = RoundingMode.HALF_EVEN;
 
    private static volatile BigDecimal result;
 
@@ -48,7 +49,7 @@ public class JoinDemo
        BigDecimal arctan1_239 = arctan(239, scale);
        BigDecimal pi = arctan1_5.multiply(FOUR).
                        subtract(arctan1_239).multiply(FOUR);
-       return pi.setScale(digits, BigDecimal.ROUND_HALF_UP);
+       return pi.setScale(digits, RoundingMode.HALF_UP);
     }
 
     /*
