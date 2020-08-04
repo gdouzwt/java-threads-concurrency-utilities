@@ -2,14 +2,11 @@ package v4;
 
 public class ThreadDemo {
     public static void main(String[] args) {
-        Runnable r = new Runnable() {
-            @Override
-            public void run() {
-                String name = Thread.currentThread().getName();
-                int count = 0;
-                while (!Thread.interrupted())
-                    System.out.println(name + ": " + count++);
-            }
+        Runnable r = () -> {
+            String name = Thread.currentThread().getName();
+            int count = 0;
+            while (!Thread.interrupted())
+                System.out.println(name + ": " + count++);
         };
         Thread thdA = new Thread(r);
         Thread thdB = new Thread(r);
@@ -17,7 +14,7 @@ public class ThreadDemo {
         thdB.start();
         try {
             Thread.sleep(2000);
-        } catch (InterruptedException ie) {
+        } catch (InterruptedException ignored) {
         }
         thdA.interrupt();
         thdB.interrupt();

@@ -1,6 +1,7 @@
 package v3;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class ThreadDemo {
     // constant used in pi computation
@@ -9,7 +10,7 @@ public class ThreadDemo {
 
     // rounding mode to use during pi computation
 
-    private static final int roundingMode = BigDecimal.ROUND_HALF_EVEN;
+    private static final RoundingMode roundingMode = RoundingMode.HALF_EVEN;
 
     private static BigDecimal result;
 
@@ -21,7 +22,7 @@ public class ThreadDemo {
         Thread t = new Thread(r);
         t.start();
         try {
-            t.join();
+            t.join();  // 等待 worker thread 完成任务返回
         } catch (InterruptedException ie) {
             // Should never arrive here because interrupt() is never
             // called.
@@ -44,7 +45,7 @@ public class ThreadDemo {
         BigDecimal arctan1_239 = arctan(239, scale);
         BigDecimal pi = arctan1_5.multiply(FOUR).
             subtract(arctan1_239).multiply(FOUR);
-        return pi.setScale(digits, BigDecimal.ROUND_HALF_UP);
+        return pi.setScale(digits, RoundingMode.HALF_UP);
     }
 
     /*

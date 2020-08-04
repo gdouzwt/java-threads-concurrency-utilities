@@ -13,13 +13,13 @@ public class CalculateE {
             @Override
             public BigDecimal call() {
                 MathContext mc =
-                        new MathContext(100, RoundingMode.HALF_UP);
+                    new MathContext(100, RoundingMode.HALF_UP);
                 BigDecimal result = BigDecimal.ZERO;
                 for (int i = 0; i <= LASTITER; i++) {
                     BigDecimal factorial =
-                            factorial(new BigDecimal(i));
+                        factorial(new BigDecimal(i));
                     BigDecimal res = BigDecimal.ONE.divide(factorial,
-                            mc);
+                        mc);
                     result = result.add(res);
                 }
                 return result;
@@ -30,7 +30,7 @@ public class CalculateE {
                     return BigDecimal.ONE;
                 else
                     return n.multiply(factorial(n.
-                            subtract(BigDecimal.ONE)));
+                        subtract(BigDecimal.ONE)));
             }
         };
         Future<BigDecimal> taskFuture = executor.submit(callable);
